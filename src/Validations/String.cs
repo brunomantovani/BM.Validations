@@ -83,6 +83,11 @@ namespace BM.Validations
             GarantirRegex(value, "^[a-zA-Z]*$", errorMessage);
         }
 
+        /// <summary>
+        /// Garante que o valor tenha apenas letras e números
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="errorMessage"></param>
         public static void GarantirAlfaNumerico(string value, string errorMessage)
         {
             GarantirRegex(value, "^[a-zA-Z0-9]*$", errorMessage);
