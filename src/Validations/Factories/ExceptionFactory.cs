@@ -20,6 +20,17 @@ namespace BM.Validations.Factories
         /// Cria uma instância de um ApplicationException (ou que herda).
         /// </summary>
         /// <param name="errorMessage"></param>
+        /// <returns></returns>
+        public static ApplicationException Create(
+            string errorMessage, params object[] args)
+        {
+            return new ApplicationException(string.Format(errorMessage, args));
+        }
+
+        /// <summary>
+        /// Cria uma instância de um ApplicationException (ou que herda).
+        /// </summary>
+        /// <param name="errorMessage"></param>
         /// <param name="innerException"></param>
         /// <returns></returns>
         public static ApplicationException Create(

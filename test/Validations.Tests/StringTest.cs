@@ -118,5 +118,74 @@ namespace Validations.Tests
             AssertHelper.IsValidException(applicationExceptionErro, ErrorMessage);
         }
 
+        [TestMethod]
+        public void QuandoEuGarantirNumerico()
+        {
+            //arrange
+            const string valueOk = "123";
+            const string valueError = "A123";
+            ApplicationException applicationExceptionNumerico;
+            ApplicationException applicationExceptionErro;
+
+            //act
+            applicationExceptionNumerico =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirNumerico(valueOk, ErrorMessage));
+
+            applicationExceptionErro =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirNumerico(valueError, ErrorMessage));
+
+            //assert
+            Assert.IsNull(applicationExceptionNumerico);
+            AssertHelper.IsValidException(applicationExceptionErro, ErrorMessage);
+        }
+
+        [TestMethod]
+        public void QuandoEuGarantirAlfa()
+        {
+            //arrange
+            const string valueOk = "AbCd";
+            const string valueError = "AbCb1";
+            ApplicationException applicationExceptionAlfa;
+            ApplicationException applicationExceptionErro;
+
+            //act
+            applicationExceptionAlfa =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirAlfa(valueOk, ErrorMessage));
+
+            applicationExceptionErro =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirAlfa(valueError, ErrorMessage));
+
+            //assert
+            Assert.IsNull(applicationExceptionAlfa);
+            AssertHelper.IsValidException(applicationExceptionErro, ErrorMessage);
+        }
+
+        [TestMethod]
+        public void QuandoEuGarantirAlfaNumerico()
+        {
+            //arrange
+            const string valueOk = "A1B2";
+            const string valueError = "A1_B2";
+            ApplicationException applicationExceptionAlfaNumerico;
+            ApplicationException applicationExceptionErro;
+
+            //act
+            applicationExceptionAlfaNumerico =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirAlfaNumerico(valueOk, ErrorMessage));
+
+            applicationExceptionErro =
+                ActHelper.GetApplicationException(
+                    () => ValidatorHelper.GarantirAlfaNumerico(valueError, ErrorMessage));
+
+            //assert
+            Assert.IsNull(applicationExceptionAlfaNumerico);
+            AssertHelper.IsValidException(applicationExceptionErro, ErrorMessage);
+        }
+
     }
 }

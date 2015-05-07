@@ -62,5 +62,30 @@ namespace BM.Validations
         {
             GarantirVerdadeiro(() => Regex.IsMatch(value, pattern), errorMessage);
         }
+
+        /// <summary>
+        /// Garante que o valor tenha apenas números
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="errorMessage"></param>
+        public static void GarantirNumerico(string value, string errorMessage)
+        {
+            GarantirRegex(value, "^[0-9]*$", errorMessage);
+        }
+
+        /// <summary>
+        /// Garante que o valor tenha apenas letras
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="errorMessage"></param>
+        public static void GarantirAlfa(string value, string errorMessage)
+        {
+            GarantirRegex(value, "^[a-zA-Z]*$", errorMessage);
+        }
+
+        public static void GarantirAlfaNumerico(string value, string errorMessage)
+        {
+            GarantirRegex(value, "^[a-zA-Z0-9]*$", errorMessage);
+        }
     }
 }
